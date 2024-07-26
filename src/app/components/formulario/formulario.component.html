@@ -1,0 +1,38 @@
+ <div class="all">
+ <div *ngIf="preguntas.length > 0">
+  <form (ngSubmit)="submitForm()">
+    <div *ngFor="let pregunta of preguntas" class="question-container">
+      <label [for]="pregunta.id">{{pregunta.id}}. {{pregunta.pregunta}}</label>
+      <div>
+        <label>
+          <input type="radio" [name]="pregunta.id" [value]="1" (change)="onAnswerChange(pregunta.id, 1)">
+          Totalmente de acuerdo
+        </label>
+        <label>
+          <input type="radio" [name]="pregunta.id" [value]="2" (change)="onAnswerChange(pregunta.id, 2)">
+          Algo de acuerdo
+        </label>
+        <label>
+          <input type="radio" [name]="pregunta.id" [value]="3" (change)="onAnswerChange(pregunta.id, 3)">
+          Neutral
+        </label>
+        <label>
+          <input type="radio" [name]="pregunta.id" [value]="4" (change)="onAnswerChange(pregunta.id, 4)">
+          Algo en desacuerdo
+        </label>
+        <label>
+          <input type="radio" [name]="pregunta.id" [value]="5" (change)="onAnswerChange(pregunta.id, 5)">
+          Totalmente en desacuerdo
+        </label>
+      </div>
+    </div>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div class="button-container">
+      <button type="submit">Enviar</button>
+    </div>
+  </form>
+</div>
+<div *ngIf="preguntas.length === 0">
+  Cargando preguntas...
+</div>
+</div>
